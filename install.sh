@@ -16,16 +16,16 @@ echo "[INFO] Installing GNU parallel complete."
 
 echo "[INFO] Installing brew programs..."
 echo "[INFO] This will take a while and you wont see download progress."
-parallel brew fetch ::: hub elasticsearch yarn kibana mysql thefuck ctop node sbt unrar httpie bash-completion
-brew install hub elasticsearch yarn kibana mysql thefuck ctop node sbt unrar httpie bash-completion
+parallel brew fetch ::: elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub
+brew install elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub
 brew upgrade
 # rm -rf $(brew --cache)
 echo "[INFO] Installing brew programs complete."
 
 echo "[INFO] Installing brew cask programs..."
 echo "[INFO] This will take a while and you wont see download progress."
-parallel brew cask fetch ::: datagrip docker font-fira-code intellij-idea java8 spectacle steam sublime-text tomighty webstorm whatsapp
-brew cask install datagrip docker font-fira-code intellij-idea java8 spectacle steam sublime-text tomighty webstorm whatsapp
+parallel brew cask fetch ::: google-chrome spotify whatsapp java8 intellij-idea docker-edge datagrip webstorm slack font-fira-code spectacle steam sublime-text tomighty qbittorrent spotify-notifications vlc
+brew cask install google-chrome spotify whatsapp java8 intellij-idea docker-edge datagrip webstorm slack font-fira-code spectacle steam sublime-text tomighty qbittorrent spotify-notifications vlc
 brew cask upgrade
 # brew cask cleanup
 echo "[INFO] Installing brew cask programs complete."
