@@ -9,9 +9,9 @@ export PATH="$SPREDFAST_HOME/scripts/dev:$PATH"
 export PATH="$PATH:$PALAN_SCRIPTS"
 
 export CLICOLOR=1
+
 alias lsl='ls -Fahl'
 alias androidstudio='open -a /Applications/Android\ Studio.app'
-
 alias cdwebapp='cd ~/code/sf-webapp'
 alias cdjmvc='cd ~/code/sf-webapp/jmvc/src/main/jmvc'
 alias cdjava='cd ~/code/sf-webapp/java'
@@ -28,6 +28,13 @@ alias cdreactlib='cd ~/code/react-lib'
 alias cdfetch='cd ~/code/sf-dataservices'
 alias cdhutson='cd ~/code/hutson'
 alias cdgateway='cd ~/code/sf-social-gateway'
+alias jrun='./gradlew jettyRun'
+
+export COOKIE='Cookie: ajs_user_id=null; ajs_group_id=null; ajs_anonymous_id=%2277e4565f-6bb7-4e92-8668-0472363bdb61%22; _ga=GA1.2.739551777.1526926135; _gid=GA1.2.615781134.1527482715; sfcsrf-infralogin.spredfast.com=9ab4834186c04a4fbc31c18f8cdc5910; sfui-infralogin.spredfast.com="{\"userId\":141948,\"companyId\":78708,\"impersonatorUserId\":null}"; csrf_token=9ab4834186c04a4fbc31c18f8cdc5910; PHPSESSID=9seglhp9nhqp03hechgkcopfk3; sfauth-infralogin.spredfast.com=H4sIAAAAAAAAAG2QQU/DIBiG/8t3brbiaAs9aeYOHvSinoyHr/ChTVpogDVzy/67sGVTEzmQkI+H93k5wDaQf9DQMs4kFwXQiP0ALeCHs3scaH8bJk/aYIgL5UYoIO0T2q8MNaIpM2Pne4qJC9C+HWDyTm9VPL1aXE5POFJ6du3sTD5g7J0NcJ1u7Nx7Z0eyZ4zf/Df6rZVY2kXyFof1jxAwOOlciFefu3zGOIV2udQ0d263+Fvo+F5AoBCS0HNEHynnVzdNLRmXQlRNAb0e6KUfyW3jnUmZjyEr8jKvK7zZTb0/9Trz6WdkJWXmVfAmaUjsuFhxJmpVcuSmUyummDBCaVVJVkJOyh0Z1dxgXXc18a5UgnNalZVgVYeaOp3uoR77lGNwCHT8BscP9ePFAQAA; sfsig-infralogin.spredfast.com=MFBeC9Dz30wGo0fFaqd9FWpdwic=; sfjwt-infralogin.spredfast.com=eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiIxNDE5NDgiLCJleHAiOjE1Mjc3MDg5NTksImF1ZCI6IndlYmFwcCIsInNlc3Npb24iOiJINHNJQUFBQUFBQUFBRzJRUVUvRElCaUcvOHQzYnJiaWFBczlhZVlPSHZTaW5veUhyL0NoVFZwb2dEVnp5LzY3c0dWVEV6bVFrSStIOTNrNXdEYVFmOURRTXM0a0Z3WFFpUDBBTGVDSHMzc2NhSDhiSmsvYVlJZ0w1VVlvSU8wVDJxOE1OYUlwTTJQbmU0cUpDOUMrSFdEeVRtOVZQTDFhWEU1UE9GSjZkdTNzVEQ1ZzdKME5jSjF1N054N1owZXlaNHpmL0RmNnJaVlkya1h5Rm9mMWp4QXdPT2xjaUZlZnUzekdPSVYydWRRMGQyNjMrRnZvK0Y1QW9CQ1MwSE5FSHlublZ6ZE5MUm1YUWxSTkFiMGU2S1VmeVczam5VbVpqeUVyOGpLdks3elpUYjAvOVRyejZXZGtKV1htVmZBbWFVanN1Rmh4Sm1wVmN1U21VeXVtbURCQ2FWVkpWa0pPeWgwWjFkeGdYWGMxOGE1VWduTmFsWlZnVlllYU9wM3VvUjc3bEdOd0NIVDhCc2NQOWVQRkFRQUEifQ.HSzFleoLaCm8ECEOLXsqVDko3pOZkq7voJvXIEdo_0QleWYrkhOJ8oUCNW_Gt8uQqUAfsmmNBCOLEBNMaFnLZvRlansPqsoC3y-jQqp_6g_jyw5Wsn6KqVv3b1jcl31PJTyCvXj9Rx9hzWMYU5m1ESjh9figcdUqkcLTexcJ7ngcKdh5t-OoBujm1fFXsJ_LgYJoWDMc9P30KD66dV9DAieJ8fAZyshpnZCmNEF3a48W-CYYQnjJ349VJpnYZUuLzTZpLYnKuOc1BbjjGRzfjfMCGN8tnKhXiJOU6XAiVbPLtkGYBAL612AA6jl22mOW3rg1IxQd1NhHvBPsKhCrOIedSDYt9UhVfy8kvuKbdt8MAJCz115IwOIwxw6NaXw86YEd8gA9WM3opUkaJeqroSdssTSxchmGFaHmPf7zkcp-1gTwBkL5hQSVTpAsxuHfuB3CLDb-KA2UyjtIF_WN_iOtD9DLPQB_U93Q37vp2BXoUa9tHMktXq-YEa1zUkjX'
+
+function pegale() {
+	http $1 "$COOKIE" $@
+}
 
 function dlogs() {
 	tail=1
@@ -37,8 +44,20 @@ function dlogs() {
 	docker logs -f --tail ${tail} $1
 }
 
+function dstopall() {
+	docker stop $(docker ps -q)
+}
+
+function dremoveall() {
+	docker rm $(docker ps -aq)
+}
+
 function drestart() {
-	docker restart $1
+	docker restart $@
+}
+
+function dstop() {
+	docker stop $@
 }
 
 # git bash completion
@@ -118,4 +137,3 @@ export PS1="\[\e[32m\]\u@\h\[\e[34m\]\w\[\e[31m\]\`parse_git_branch\`\\$ \[\e[m\
 # \[\e[36m\] 36 grey? \[\e[m\]
 # \[\e[37m\] 37 white \[\e[m\]
 # "
-
