@@ -16,8 +16,8 @@ echo "[INFO] Installing GNU parallel complete."
 
 echo "[INFO] Installing brew programs..."
 echo "[INFO] This will take a while and you wont see download progress."
-parallel brew fetch ::: hub elasticsearch yarn kibana mysql thefuck ctop node sbt unrar httpie
-brew install hub elasticsearch yarn kibana mysql thefuck ctop node sbt unrar httpie
+parallel brew fetch ::: hub elasticsearch yarn kibana mysql thefuck ctop node sbt unrar httpie bash-completion
+brew install hub elasticsearch yarn kibana mysql thefuck ctop node sbt unrar httpie bash-completion
 brew upgrade
 # rm -rf $(brew --cache)
 echo "[INFO] Installing brew programs complete."

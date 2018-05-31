@@ -60,14 +60,10 @@ function dstop() {
 	docker stop $@
 }
 
-# git bash completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+# bash completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 eval $(thefuck --alias)
-# For other shells, check https://github.com/nvbn/thefuck/wiki/Shell-aliases
-
 
 
 # get current branch in git repo
