@@ -6,6 +6,13 @@ fi
 source ~/.bash_profile
 echo "[INFO] Writting to .bash_profile complete."
 
+echo "[INFO] Copying gitconfig file to '$HOME'..."
+if [[ ! -f $HOME/.gitconfig ]]; then
+	cp $HOME/code/scripts/gitconfig $HOME/.gitconfig && echo "[INFO] Copying gitconfig file to '$HOME' complete."
+else
+	echo "[WARN] Aborted: gitconfig file already exists."
+fi
+
 echo "[INFO] Installing brew..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 echo "[INFO] Installing brew complete."
