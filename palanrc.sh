@@ -33,6 +33,10 @@ alias jrun='./gradlew jettyRun'
 alias mrebase='git checkout master && git pull && git checkout - && git rebase master'
 alias renewkube='d2 renew-cert'
 
+function repos() {
+	http GET "https://api.github.com/users/palanga/repos?sort=created&direction=asc"
+}
+
 LOGIN_BASE_URL='https://infralogin.spredfast.com/user/login'
 HTTPIE_SPREDFAST_SESSION_PATH='/tmp/spredfast-session.json'
 
