@@ -32,6 +32,7 @@ alias cdscripts='cd ~/code/scripts'
 alias jrun='./gradlew jettyRun'
 alias mrebase='git checkout master && git pull && git checkout - && git rebase master'
 alias renewkube='d2 renew-cert'
+alias postgres-start='pg_ctl -D /usr/local/var/postgres start'
 
 function repos() {
 	http GET "https://api.github.com/users/palanga/repos?sort=created&direction=asc"

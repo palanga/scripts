@@ -52,8 +52,8 @@ function install() {
 
 	log -i "Installing brew programs..."
 	log -i "This will take a while and you wont see any download progress."
-	parallel brew fetch ::: elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub
-	brew install elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub
+	parallel brew fetch ::: elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub postgresql
+	brew install elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub postgresql
 	brew upgrade
 	log -i "Installing brew programs complete."
 
@@ -81,6 +81,7 @@ function update() {
 	log -e "Not implemented yet."
 }
 
+# TODO: change these with a switch case
 if [[ $1 == "install" ]]; then
 	install
 fi
@@ -91,6 +92,10 @@ fi
 
 if [[ $1 == "fetch" ]]; then
 	fetch
+fi
+
+if [[ $1 == "update" ]]; then
+	update
 fi
 
 if [[ $1 == "cleanup" ]]; then
