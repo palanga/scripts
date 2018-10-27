@@ -52,8 +52,8 @@ function install() {
 
 	log -i "Installing brew programs..."
 	log -i "This will take a while and you wont see any download progress."
-	parallel brew fetch ::: elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub postgresql
-	brew install elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub postgresql
+	parallel brew fetch ::: elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub postgresql coreutils
+	brew install elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub postgresql coreutils
 	brew upgrade
 	log -i "Installing brew programs complete."
 

@@ -10,9 +10,12 @@ export PATH="$PATH:$PALAN_SCRIPTS"
 
 export CLICOLOR=1
 
-alias lsl='ls -Fahl'
+alias ls='gls --color=always'
+alias lsl='ls -FAhlX --group-directories-first'
 alias androidstudio='open -a /Applications/Android\ Studio.app'
 alias cdwebapp='cd ~/code/sf-webapp'
+alias cdunacucha='cd ~/code/una-cucha'
+alias cdanalytics='cd ~/code/analytics-ui'
 alias cdjmvc='cd ~/code/sf-webapp/jmvc/src/main/jmvc'
 alias cdjava='cd ~/code/sf-webapp/java'
 alias cdagent='cd ~/code/agent-inbox'
@@ -21,8 +24,6 @@ alias cdhome='cd ~'
 alias dup='docker-compose up -d'
 alias ydev='yarn build:dev'
 alias src='source ~/.bash_profile'
-alias cdfilter='cd ~/code/sf-webapp/jmvc/src/main/jmvc/stream_filter'
-alias cdsocial='cd ~/code/sf-webapp/jmvc/src/main/jmvc/social_inbox'
 alias cdcode='cd ~/code'
 alias cdreactlib='cd ~/code/react-lib'
 alias cdfetch='cd ~/code/sf-dataservices'
@@ -67,19 +68,11 @@ function dlogs() {
 }
 
 function dstopall() {
-	docker stop $(docker ps -q)
+	docker ps -q | xargs docker stop
 }
 
 function dremoveall() {
-	docker rm $(docker ps -aq)
-}
-
-function drestart() {
-	docker restart $@
-}
-
-function dstop() {
-	docker stop $@
+	docker ps -aq | xargs docker rm
 }
 
 # bash completion
