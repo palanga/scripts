@@ -73,7 +73,7 @@ function fetch() {
 function cleanup() {
 	log -i "Erasing brew and brew cask cache..."
 	rm -rf $(brew --cache)
-	brew cask cleanup
+	brew cleanup
 	log -i "Erasing brew and brew cask cache complete."
 }
 
