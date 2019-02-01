@@ -52,15 +52,23 @@ function install() {
 
 	log -i "Installing brew programs..."
 	log -i "This will take a while and you wont see any download progress."
-	parallel brew fetch ::: elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub postgresql coreutils
-	brew install elasticsearch kibana node yarn mysql thefuck ctop sbt unrar httpie git bash-completion hub postgresql coreutils
+	parallel brew fetch ::: node yarn thefuck ctop sbt unrar httpie git bash-completion hub coreutils
+	brew install node yarn thefuck ctop sbt unrar httpie git bash-completion hub coreutils
 	brew upgrade
 	log -i "Installing brew programs complete."
 
+	log -i "Tapping homebrew/cask-fonts..."
+	brew tap homebrew/cask-fonts
+	log -i "Tapping homebrew/cask-fonts complete."
+
+	log -i "Tapping homebrew/cask-versions..."
+	brew tap homebrew/cask-versions
+	log -i "Tapping homebrew/cask-versions complete."
+
 	log -i "Installing brew cask programs..."
 	log -i "This will take a while and you wont see any download progress."
-	parallel brew cask fetch ::: google-chrome spotify whatsapp java8 intellij-idea docker-edge datagrip webstorm slack font-fira-code spectacle steam sublime-text tomighty qbittorrent spotify-notifications vlc
-	brew cask install google-chrome spotify whatsapp java8 intellij-idea docker-edge datagrip webstorm slack font-fira-code spectacle steam sublime-text tomighty qbittorrent spotify-notifications vlc
+	parallel brew cask fetch ::: google-chrome spotify whatsapp java java8 intellij-idea docker-edge slack font-fira-code spectacle sublime-text tomighty qbittorrent spotify-notifications vlc
+	brew cask install google-chrome spotify whatsapp java java8 intellij-idea docker-edge slack font-fira-code spectacle sublime-text tomighty qbittorrent spotify-notifications vlc
 	brew cask upgrade
 	log -i "Installing brew cask programs complete."
 }
