@@ -100,7 +100,15 @@ function cleanup() {
 }
 
 function update() {
-	log -e "Not implemented yet."
+	print -i "Updating the following fomulaes:"
+	formulaes_diff=`comm -23 <(sort $HOME/code/scripts/formulaes) <(brew list)`
+	echo $formulaes_diff | xargs -n1 echo
+	print -i "..."
+	echo $formulaes_diff | xargs parallel brew fetch :::
+	echo $formulaes_diff | xargs brew install
+	print -i "Updating fomulaes complete."
+
+	print -w "Updating cask-formulaes is not implemented yet."
 }
 
 # TODO: change these with a switch case
