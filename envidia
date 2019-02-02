@@ -1,4 +1,4 @@
-function log() {
+function print() {
 	option=$1
 	message=$2
 
@@ -24,79 +24,79 @@ function log() {
 }
 
 function config() {
-	log -i "Writting to .bash_profile..."
+	print -i "Writting to .bash_profile..."
 	SOURCE_SCRIPT_LINE="source $HOME/code/scripts/palanrc.sh"
 	if ! grep -x -q "$SOURCE_SCRIPT_LINE" ~/.bash_profile ; then
 		echo $SOURCE_SCRIPT_LINE >> ~/.bash_profile
 	fi
 	source ~/.bash_profile
-	log -i "Writting to .bash_profile complete."
+	print -i "Writting to .bash_profile complete."
 
-	log -i "Copying gitconfig file to '$HOME'..."
-	cp $HOME/code/scripts/gitconfig $HOME/.gitconfig && log -i "Copying gitconfig file to '$HOME' complete."
+	print -i "Copying gitconfig file to '$HOME'..."
+	cp $HOME/code/scripts/gitconfig $HOME/.gitconfig && print -i "Copying gitconfig file to '$HOME' complete."
 
 }
 
 function install() {
-	log -i "Installing brew..."
+	print -i "Installing brew..."
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	log -i "Installing brew complete."
+	print -i "Installing brew complete."
 
-	log -i "Installing GNU parallel..."
+	print -i "Installing GNU parallel..."
 	brew install parallel
-	log -i "Installing GNU parallel complete."
+	print -i "Installing GNU parallel complete."
 
-	log -i "Installing brew programs..."
+	print -i "Installing brew programs..."
 	cat formulaes
-	log -i "This will take a while and you wont see any download progress."
-	cat formulaes | xargs parallel brew fetch :::
-	cat formulaes | xargs brew install
+	print -i "This will take a while and you wont see any download progress."
+	cat $HOME/code/scripts/formulaes | xargs parallel brew fetch :::
+	cat $HOME/code/scripts/formulaes | xargs brew install
 	brew upgrade
-	log -i "Installing brew programs complete."
+	print -i "Installing brew programs complete."
 
-	log -i "Tapping homebrew/cask-fonts..."
+	print -i "Tapping homebrew/cask-fonts..."
 	brew tap homebrew/cask-fonts
-	log -i "Tapping homebrew/cask-fonts complete."
+	print -i "Tapping homebrew/cask-fonts complete."
 
-	log -i "Tapping homebrew/cask-versions..."
+	print -i "Tapping homebrew/cask-versions..."
 	brew tap homebrew/cask-versions
-	log -i "Tapping homebrew/cask-versions complete."
+	print -i "Tapping homebrew/cask-versions complete."
 
-	log -i "Installing brew cask programs first round..."
-	cat cask-formulaes-1
-	log -i "This will take a while and you wont see any download progress."
-	cat cask-formulaes-1 | xargs parallel brew cask fetch :::
-	cat cask-formulaes-1 | xargs brew cask install
+	print -i "Installing brew cask programs first round..."
+	cat $HOME/code/scripts/cask-formulaes-1
+	print -i "This will take a while and you wont see any download progress."
+	cat $HOME/code/scripts/cask-formulaes-1 | xargs parallel brew cask fetch :::
+	cat $HOME/code/scripts/cask-formulaes-1 | xargs brew cask install
 	brew cask upgrade
-	log -i "Installing brew cask programs first round complete."
+	print -i "Installing brew cask programs first round complete."
 
-	log -i "Installing brew cask programs second round..."
-	cat cask-formulaes-2
-	log -i "This will take a while and you wont see any download progress."
-	cat cask-formulaes-2 | xargs parallel brew cask fetch :::
-	cat cask-formulaes-2 | xargs brew cask install
+	print -i "Installing brew cask programs second round..."
+	cat $HOME/code/scripts/cask-formulaes-2
+	print -i "This will take a while and you wont see any download progress."
+	cat $HOME/code/scripts/cask-formulaes-2 | xargs parallel brew cask fetch :::
+	cat $HOME/code/scripts/cask-formulaes-2 | xargs brew cask install
 	brew cask upgrade
-	log -i "Installing brew cask programs second round complete."
+	print -i "Installing brew cask programs second round complete."
 
-	log -i "Installing brew cask programs third round..."
-	cat cask-formulaes-3
-	log -i "This will take a while and you wont see any download progress."
-	cat cask-formulaes-3 | xargs parallel brew cask fetch :::
-	cat cask-formulaes-3 | xargs brew cask install
+	print -i "Installing brew cask programs third round..."
+	cat $HOME/code/scripts/cask-formulaes-3
+	print -i "This will take a while and you wont see any download progress."
+	cat $HOME/code/scripts/cask-formulaes-3 | xargs parallel brew cask fetch :::
+	cat $HOME/code/scripts/cask-formulaes-3 | xargs brew cask install
 	brew cask upgrade
-	log -i "Installing brew cask programs third round complete."
+	print -i "Installing brew cask programs third round complete."
 }
 
 function fetch() {
-	cd $PALAN_SCRIPTS && git pull && log -i "Repo succesfully updated" || log -e "Couldn't update repo"
+	cd $PALAN_SCRIPTS && git pull && print -i "Repo succesfully updated" || print -e "Couldn't update repo"
 	cd - > /dev/null
 }
 
 function cleanup() {
-	log -i "Erasing brew and brew cask cache..."
+	print -i "Erasing brew and brew cask cache..."
 	rm -rf $(brew --cache)
 	brew cleanup
-	log -i "Erasing brew and brew cask cache complete."
+	print -i "Erasing brew and brew cask cache complete."
 }
 
 function update() {
