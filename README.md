@@ -4,8 +4,8 @@ INSTALL
 Download this repo and:
 ```bash
 cd this/repo
-. ./install.sh
+. ./envidia
 
 ```
 
-Make coffee
+creo que el script asume que el repo esta en `~/code/scripts`

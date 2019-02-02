@@ -125,5 +125,5 @@ if [[ $1 == "cleanup" ]]; then
 fi
 
 if [[ $1 == "" ]]; then
-	echo "Usage: . install.sh { install | config | fetch | update | cleanup }"
+	echo "Usage: . envidia { install | config | fetch | update | cleanup }"
 fi
