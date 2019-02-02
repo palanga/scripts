@@ -33,11 +33,7 @@ function config() {
 	log -i "Writting to .bash_profile complete."
 
 	log -i "Copying gitconfig file to '$HOME'..."
-	if [[ ! -f $HOME/.gitconfig ]]; then
-		cp $HOME/code/scripts/gitconfig $HOME/.gitconfig && log -i "Copying gitconfig file to '$HOME' complete."
-	else
-		log -w "Aborted: gitconfig file already exists."
-	fi
+	cp $HOME/code/scripts/gitconfig $HOME/.gitconfig && log -i "Copying gitconfig file to '$HOME' complete."
 
 }
 

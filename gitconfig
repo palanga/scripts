@@ -1,8 +1,14 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-	email = agonzalez@spredfast.com
+	# email = agonzalez@spredfast.com
+	# name = Andrés González
+	email = a.gonzalez.terres@gmail.com
 	name = Andrés González
+
+[core]
+	editor = 'subl' --wait --new-window
+
 [alias]
 	lgraph = log --graph --decorate=short --color --format=format:'%C(black)[%cr]%C(reset) %C(bold blue)%h%C(reset) %C(auto)%d%C(reset)%n %x09%C(bold black)%an:%C(reset) %C(black)%s %C(reset)'
 
