@@ -47,9 +47,10 @@ function install() {
 	log -i "Installing GNU parallel complete."
 
 	log -i "Installing brew programs..."
+	cat formulaes
 	log -i "This will take a while and you wont see any download progress."
-	parallel brew fetch ::: node yarn thefuck ctop sbt unrar httpie git bash-completion hub coreutils
-	brew install node yarn thefuck ctop sbt unrar httpie git bash-completion hub coreutils
+	cat formulaes | xargs parallel brew fetch :::
+	cat formulaes | xargs brew install
 	brew upgrade
 	log -i "Installing brew programs complete."
 
@@ -61,12 +62,29 @@ function install() {
 	brew tap homebrew/cask-versions
 	log -i "Tapping homebrew/cask-versions complete."
 
-	log -i "Installing brew cask programs..."
+	log -i "Installing brew cask programs first round..."
+	cat cask-formulaes-1
 	log -i "This will take a while and you wont see any download progress."
-	parallel brew cask fetch ::: google-chrome spotify whatsapp java java8 intellij-idea docker-edge slack font-fira-code spectacle sublime-text tomighty qbittorrent spotify-notifications vlc
-	brew cask install google-chrome spotify whatsapp java java8 intellij-idea docker-edge slack font-fira-code spectacle sublime-text tomighty qbittorrent spotify-notifications vlc
+	cat cask-formulaes-1 | xargs parallel brew cask fetch :::
+	cat cask-formulaes-1 | xargs brew cask install
 	brew cask upgrade
-	log -i "Installing brew cask programs complete."
+	log -i "Installing brew cask programs first round complete."
+
+	log -i "Installing brew cask programs second round..."
+	cat cask-formulaes-2
+	log -i "This will take a while and you wont see any download progress."
+	cat cask-formulaes-2 | xargs parallel brew cask fetch :::
+	cat cask-formulaes-2 | xargs brew cask install
+	brew cask upgrade
+	log -i "Installing brew cask programs second round complete."
+
+	log -i "Installing brew cask programs third round..."
+	cat cask-formulaes-3
+	log -i "This will take a while and you wont see any download progress."
+	cat cask-formulaes-3 | xargs parallel brew cask fetch :::
+	cat cask-formulaes-3 | xargs brew cask install
+	brew cask upgrade
+	log -i "Installing brew cask programs third round complete."
 }
 
 function fetch() {
