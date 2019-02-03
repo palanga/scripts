@@ -10,6 +10,7 @@
 	editor = 'subl' --wait --new-window
 
 [alias]
+	diffstaged = diff --staged
 	lgraph = log --graph --decorate=short --color --format=format:'%C(black)[%cr]%C(reset) %C(bold blue)%h%C(reset) %C(auto)%d%C(reset)%n %x09%C(bold black)%an:%C(reset) %C(black)%s %C(reset)'
 
 	# lgraph = log --graph --decorate=short --color --format=format:'%C(bold blue)%h%C(reset) %C(auto)%d%C(reset)%n         %C(black)[%cr]%C(reset)  %x09%C(black)%an: %s %C(reset)'
