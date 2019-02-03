@@ -29,11 +29,15 @@ function config() {
 	if ! grep -x -q "$SOURCE_SCRIPT_LINE" ~/.bash_profile ; then
 		echo $SOURCE_SCRIPT_LINE >> ~/.bash_profile
 	fi
+	print -w "1"
 	source ~/.bash_profile
 	print -i "Writting to .bash_profile complete."
 
 	print -i "Copying gitconfig file to '$HOME'..."
 	cp $HOME/code/scripts/gitconfig $HOME/.gitconfig && print -i "Copying gitconfig file to '$HOME' complete."
+
+	print -i "Copying bmonrc file to '$HOME'..."
+	cp $HOME/code/scripts/bmonrc $HOME/.bmonrc && print -i "Copying bmonrc file to '$HOME' complete."
 
 }
 
