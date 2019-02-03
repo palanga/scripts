@@ -109,22 +109,22 @@ function parse_git_dirty {
 	bits=''
 
 	if [ $modified == 0 ]; then
-		bits="!${bits}"
+		bits="✏️${bits}"
 	fi
 	if [ $untracked == 0 ]; then
-		bits="?${bits}"
+		bits="🔍${bits}"
 	fi
 	if [ $newfile == 0 ]; then
-		bits="+${bits}"
+		bits="✨${bits}"
 	fi
 	if [ $renamed == 0 ]; then
-		bits=">${bits}"
+		bits="🌈${bits}"
 	fi
 	if [ $deleted == 0 ]; then
-		bits="x${bits}"
+		bits="🗑${bits}"
 	fi
 	if [ ! "${bits}" == "" ]; then
-		echo " ${bits}"
+		echo " ${bits} "
 	else
 		echo ""
 	fi
@@ -137,7 +137,7 @@ function parse_git_dirty {
 # \[\e[m\]
 # "
 
-export PS1="\[\e[32m\]\u@\h\[\e[34m\]\w\[\e[31m\]\`parse_git_branch\`\\$ \[\e[m\]"
+export PS1="\[\e[32m\]\u🧀\h\[\e[34m\]\w\[\e[31m\]\`parse_git_branch\`\\$ \[\e[m\]"
 
 # export PS1="
 # \[\e[00m\] 00 default \[\e[m\]
