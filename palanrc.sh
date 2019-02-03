@@ -1,10 +1,7 @@
 export PALAN_SCRIPTS="$HOME/code/scripts"
-export SPREDFAST_HOME="$HOME/code/sf-webapp"
 
 # elasticsearch
 export PATH=$PATH:/usr/local/Cellar/elasticsearch/6.2.4/libexec/bin/x-pack/
-# spredfast
-export PATH="$SPREDFAST_HOME/scripts/dev:$PATH"
 # my scripts
 export PATH="$PATH:$PALAN_SCRIPTS"
 
@@ -13,50 +10,16 @@ export CLICOLOR=1
 alias ls='gls --color=always'
 alias lsl='ls -FAhlX --group-directories-first'
 alias androidstudio='open -a /Applications/Android\ Studio.app'
-alias cdwebapp='cd ~/code/sf-webapp'
 alias cdunacucha='cd ~/code/una-cucha'
-alias cdanalytics='cd ~/code/analytics-ui'
-alias cdjmvc='cd ~/code/sf-webapp/jmvc/src/main/jmvc'
-alias cdjava='cd ~/code/sf-webapp/java'
-alias cdagent='cd ~/code/agent-inbox'
-alias cdandroid='cd ~/code/android-first'
 alias cdhome='cd ~'
 alias dup='docker-compose up -d'
-alias ydev='yarn build:dev'
 alias src='source ~/.bash_profile'
 alias cdcode='cd ~/code'
-alias cdreactlib='cd ~/code/react-lib'
-alias cdfetch='cd ~/code/sf-dataservices'
-alias cdhutson='cd ~/code/hutson'
-alias cdgateway='cd ~/code/sf-social-gateway'
 alias cdscripts='cd ~/code/scripts'
-alias jrun='./gradlew jettyRun'
 alias mrebase='git checkout master && git pull && git checkout - && git rebase master'
-alias renewkube='d2 renew-cert'
-alias postgres-start='pg_ctl -D /usr/local/var/postgres start'
 
 function repos() {
 	http GET "https://api.github.com/users/palanga/repos?sort=created&direction=asc"
-}
-
-LOGIN_BASE_URL='https://infralogin.spredfast.com/user/login'
-HTTPIE_SPREDFAST_SESSION_PATH='/tmp/spredfast-session.json'
-
-function logueame() {
-	# $1: password
-	http POST "${LOGIN_BASE_URL}?email=agonzalez%40spredfast.com&password=${1}" \
-	'Content-Type: application/x-www-form-urlencoded' \
-	--session=$HTTPIE_SPREDFAST_SESSION_PATH
-
-	echo "usage: logueame \$password"
-}
-
-function pegale() {
-	# $1: http method
-	# $2: url
-	http $1 $2 --session=/tmp/spredfast-session.json
-
-	echo "usage: pegale \$http_method \$url"
 }
 
 function dlogs() {

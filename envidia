@@ -29,7 +29,10 @@ function config() {
 	if ! grep -x -q "$SOURCE_SCRIPT_LINE" ~/.bash_profile ; then
 		echo $SOURCE_SCRIPT_LINE >> ~/.bash_profile
 	fi
-	print -w "1"
+	SOURCE_SCRIPT_LINE_SF="source $HOME/code/scripts/spredfastrc.sh"
+	if ! grep -x -q "$SOURCE_SCRIPT_LINE_SF" ~/.bash_profile ; then
+		echo $SOURCE_SCRIPT_LINE_SF >> ~/.bash_profile
+	fi
 	source ~/.bash_profile
 	print -i "Writting to .bash_profile complete."
 
