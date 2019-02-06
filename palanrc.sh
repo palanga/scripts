@@ -84,7 +84,7 @@ function parse_git_dirty {
 		bits="🌈${bits}"
 	fi
 	if [ $deleted == 0 ]; then
-		bits="🗑${bits}"
+		bits="🗑 ${bits}"
 	fi
 	if [ ! "${bits}" == "" ]; then
 		echo " ${bits} "
@@ -100,7 +100,7 @@ function parse_git_dirty {
 # \[\e[m\]
 # "
 
-export PS1="\[\e[32m\]\u🧀\h\[\e[34m\]\w\[\e[31m\]\`parse_git_branch\`\\$ \[\e[m\]"
+export PS1="\[\e[32m\]\u🧀\h\[\e[34m\]\w\[\e[31m\]\`parse_git_branch\`🍷 \[\e[m\]"
 
 # export PS1="
 # \[\e[00m\] 00 default \[\e[m\]
