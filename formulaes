@@ -7,6 +7,8 @@ thefuck
 hub
 httpie
 ctop
+cabal-install
+ghc
 haskell-stack
 node
 yarn
