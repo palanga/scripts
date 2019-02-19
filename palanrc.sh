@@ -17,6 +17,7 @@ alias src='source ~/.bash_profile'
 alias cdcode='cd ~/code'
 alias cdscripts='cd ~/code/scripts'
 alias mrebase='git checkout master && git pull && git checkout - && git rebase master'
+alias editscripts='subl $PALAN_SCRIPTS'
 
 function repos() {
 	http GET "https://api.github.com/users/palanga/repos?sort=created&direction=asc"
