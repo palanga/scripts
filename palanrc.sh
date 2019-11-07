@@ -1,5 +1,7 @@
 export PALAN_SCRIPTS="$HOME/code/scripts"
 
+# haskell stuff
+export PATH=$PATH:/Users/palan/.local/bin
 # elasticsearch
 export PATH=$PATH:/usr/local/Cellar/elasticsearch/6.2.4/libexec/bin/x-pack/
 # my scripts
@@ -10,14 +12,13 @@ export CLICOLOR=1
 alias ls='gls --color=always'
 alias lsl='ls -FAhlX --group-directories-first'
 alias androidstudio='open -a /Applications/Android\ Studio.app'
-alias cdunacucha='cd ~/code/una-cucha'
-alias cdhome='cd ~'
-alias dup='docker-compose up -d'
 alias src='source ~/.bash_profile'
 alias cdcode='cd ~/code'
 alias cdscripts='cd ~/code/scripts'
 alias mrebase='git checkout master && git pull && git checkout - && git rebase master'
 alias editscripts='subl $PALAN_SCRIPTS'
+alias cdscientist='cd ~/code/the-scientist'
+alias cdscientist='cd ~/code/the-scientist'
 
 function repos() {
 	http GET "https://api.github.com/users/palanga/repos?sort=created&direction=asc"
