@@ -24,17 +24,22 @@ function print() {
 }
 
 function config() {
-	print -i "Writting to .bash_profile..."
-	SOURCE_SCRIPT_LINE="source $HOME/code/scripts/palanrc.sh"
-	if ! grep -x -q "$SOURCE_SCRIPT_LINE" ~/.bash_profile ; then
-		echo $SOURCE_SCRIPT_LINE >> ~/.bash_profile
+
+	# print -i "Writting to .bash_profile..."
+	# SOURCE_SCRIPT_LINE="source $HOME/code/scripts/palanrc.sh"
+	# if ! grep -x -q "$SOURCE_SCRIPT_LINE" ~/.bash_profile ; then
+	# 	echo $SOURCE_SCRIPT_LINE >> ~/.bash_profile
+	# fi
+	# source ~/.bash_profile
+	# print -i "Writting to .bash_profile complete."
+
+	print -i "Writting to .zshrc..."
+	SOURCE_SCRIPT_LINE="source $HOME/code/scripts/palanzshrc.sh"
+	if ! grep -x -q "$SOURCE_SCRIPT_LINE" ~/.zshrc ; then
+		echo $SOURCE_SCRIPT_LINE >> ~/.zshrc
 	fi
-	SOURCE_SCRIPT_LINE_SF="source $HOME/code/scripts/spredfastrc.sh"
-	if ! grep -x -q "$SOURCE_SCRIPT_LINE_SF" ~/.bash_profile ; then
-		echo $SOURCE_SCRIPT_LINE_SF >> ~/.bash_profile
-	fi
-	source ~/.bash_profile
-	print -i "Writting to .bash_profile complete."
+	source ~/.zshrc
+	print -i "Writting to .zshrc complete."
 
 	print -i "Copying gitconfig file to '$HOME'..."
 	cp $HOME/code/scripts/gitconfig $HOME/.gitconfig && print -i "Copying gitconfig file to '$HOME' complete."
@@ -94,29 +99,29 @@ function install() {
 	print -i "Installing brew cask programs third round complete."
 }
 
-function fetch() {
+function pullRepo() {
 	cd $PALAN_SCRIPTS && git pull && print -i "Repo succesfully updated" || print -e "Couldn't update repo"
 	cd - > /dev/null
 }
 
-function cleanup() {
+function cleanBrewCache() {
 	print -i "Erasing brew and brew cask cache..."
 	rm -rf $(brew --cache)
 	brew cleanup
 	print -i "Erasing brew and brew cask cache complete."
 }
 
-function update() {
-	print -i "Updating the following fomulaes:"
-	formulaes_diff=`comm -23 <(sort $HOME/code/scripts/formulaes) <(brew list)`
-	echo $formulaes_diff | xargs -n1 echo
-	print -i "..."
-	echo $formulaes_diff | xargs parallel brew fetch :::
-	echo $formulaes_diff | xargs brew install
-	print -i "Updating fomulaes complete."
+# function update() {
+# 	print -i "Updating the following fomulaes:"
+# 	formulaes_diff=`comm -23 <(sort $HOME/code/scripts/formulaes) <(brew list)`
+# 	echo $formulaes_diff | xargs -n1 echo
+# 	print -i "..."
+# 	echo $formulaes_diff | xargs parallel brew fetch :::
+# 	echo $formulaes_diff | xargs brew install
+# 	print -i "Updating fomulaes complete."
 
-	print -w "Updating cask-formulaes is not implemented yet."
-}
+# 	print -w "Updating cask-formulaes is not implemented yet."
+# }
 
 # TODO: change these with a switch case
 if [[ $1 == "install" ]]; then
@@ -127,18 +132,18 @@ if [[ $1 == "config" ]]; then
 	config
 fi
 
-if [[ $1 == "fetch" ]]; then
-	fetch
+if [[ $1 == "pullRepo" ]]; then
+	pullRepo
 fi
 
-if [[ $1 == "update" ]]; then
-	update
-fi
+# if [[ $1 == "update" ]]; then
+# 	update
+# fi
 
-if [[ $1 == "cleanup" ]]; then
-	cleanup
+if [[ $1 == "cleanBrewCache" ]]; then
+	cleanBrewCache
 fi
 
 if [[ $1 == "" ]]; then
-	echo "Usage: . envidia { install | config | fetch | update | cleanup }"
+	echo "Usage: . envidia { install | config | pullRepo | cleanBrewCache }"
 fi

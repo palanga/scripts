@@ -1,24 +1,27 @@
 export PALAN_SCRIPTS="$HOME/code/scripts"
 
 # haskell stuff
-export PATH=$PATH:/Users/palan/.local/bin
+# export PATH=$PATH:/Users/palan/.local/bin
 # elasticsearch
-export PATH=$PATH:/usr/local/Cellar/elasticsearch/6.2.4/libexec/bin/x-pack/
+# export PATH=$PATH:/usr/local/Cellar/elasticsearch/6.2.4/libexec/bin/x-pack/
 # my scripts
 export PATH="$PATH:$PALAN_SCRIPTS"
+
+export PATH="$PATH:/Users/palan/sbt/bin"
+
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home"
+
 
 export CLICOLOR=1
 
 alias ls='gls --color=always'
 alias lsl='ls -FAhlX --group-directories-first'
-alias androidstudio='open -a /Applications/Android\ Studio.app'
 alias src='source ~/.bash_profile'
 alias cdcode='cd ~/code'
 alias cdscripts='cd ~/code/scripts'
 alias mrebase='git checkout master && git pull && git checkout - && git rebase master'
 alias editscripts='subl $PALAN_SCRIPTS'
-alias cdscientist='cd ~/code/the-scientist'
-alias cdscientist='cd ~/code/the-scientist'
+
 
 function repos() {
 	http GET "https://api.github.com/users/palanga/repos?sort=created&direction=asc"
