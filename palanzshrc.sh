@@ -34,3 +34,5 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+
+eval $(thefuck --alias)
