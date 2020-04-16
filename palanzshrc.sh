@@ -26,3 +26,11 @@ alias cdcode='cd ~/code'
 alias cdscripts='cd ~/code/scripts'
 alias mrebase='git checkout master && git pull && git checkout - && git rebase master'
 alias editscripts='subl $PALAN_SCRIPTS'
+
+# zsh-completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
