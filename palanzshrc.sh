@@ -27,6 +27,34 @@ alias cdscripts='cd ~/code/scripts'
 alias mrebase='git checkout master && git pull && git checkout - && git rebase master'
 alias editscripts='subl $PALAN_SCRIPTS'
 
+function tiles_2() {
+	filename=$1
+	extension="${filename##*.}"
+	image_name="${filename%.*}"
+
+	width=`vipsheader -f width $filename`
+	height=`vipsheader -f height $filename`
+
+	half_width=$((width / 2))
+
+	first="${image_name}_1.${extension}"
+	second="${image_name}_2.${extension}"
+
+	echo $filename
+	echo $image_name
+	echo $extension
+	echo $width
+	echo $height
+	echo $half_width
+	echo $first
+	echo $second
+
+	vips extract_area $filename $first 0 0 $half_width $height
+	vips extract_area $filename $second $half_width 0 $half_width $height
+
+}
+
+
 # zsh-completions
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH

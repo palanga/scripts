@@ -5,10 +5,9 @@ git
 thefuck
 hub
 httpie
-node
-yarn
 bat
 tldr
 unrar
 ammonite-repl
 zsh-completions
+cassandra
